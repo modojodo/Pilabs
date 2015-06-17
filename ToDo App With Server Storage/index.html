@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo List</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+</head>
+<style>
+	.list-font{
+		font-family: 'Indie Flower', cursive;
+		font-size: 25px;
+	}
+	body{
+		background-color: #a3b1b2;
+	}
+</style>
+<body onunload="storeData">
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">
+				<span class="glyphicon glyphicon-list"></span> Todo List
+			</a>
+		</div>
+	</div>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10">
+			<input type="text" class="form-control" id="txtTodo"/>
+		</div>
+		<div class="col-xs-2">
+			<button class="btn btn-warning" id="btnAddTodo"><span class="glyphicon glyphicon-plus-sign"></span> Add
+			</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12" id="pending-todos">
+		</div>
+	</div>
+	<!--<div class="row">-->
+	<!--<div class="col-xs-2">-->
+	<!--<input id="saveBtn" class=" btn btn-success" type="text" value="Save"/>-->
+	<!--</div>-->
+	<!--</div>-->
+</div>
+
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/helper.js"></script>
+<script src="js/load-data.js"></script>
+<script src="js/store.js"></script>
+<script src="js/index.js"></script>
+
+
+</body>
+</html>
