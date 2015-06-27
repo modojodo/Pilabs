@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/custom.css"/>
+	<script src="js/respond.min.js"></script>
+
+
+	<!--Fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+<!--Vontains only navbar-->
+
+<div class="row">
+	<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header" id="left-nav">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#"><i class="fa fa-gear"></i></a></li>
+					<li><a href="#"><i class="fa fa-bell"></i></a></li>
+				</ul>
+				<form class="navbar-form navbar-right" role="search">
+					<div class="form-group">
+						<input id="search-box" type="text" class="form-control" placeholder="&#xf002;">
+					</div>
+				</form>
+			</div>
+		</div>
+	</nav>
+</div>
+
+<div id="player" class="">
+	<div class="col-lg-2 col-md-2 col-sm-3 col-xs-5" id="player-btn">
+		<button class="col-lg-4 col-md-4 col-sm-4 col-xs-4 btn btn-default" id="prev"><i
+				class="fa fa-step-backward"></i></button>
+		<button class="col-lg-4 col-md-4 col-sm-4 col-xs-4 btn btn-default" id="play"><i class="fa fa-play"></i>
+		</button>
+		<button class="col-lg-4 col-md-4 col-sm-4 col-xs-4 btn btn-default" id="next"><i class="fa fa-step-forward"></i>
+		</button>
+	</div>
+	<div class="col-lg-8 col-md-8 col-sm-7 hidden-xs" id="player-bar">
+		<div class="col-lg-10 col-md-10 col-sm-10 " id="player-bar-wrapper">
+			<div id="bottom-bar"></div>
+			<div id="top-bar"></div>
+		</div>
+		<!--<div class="col-lg-2" id="time">-->
+		<!--<label>-5:33</label>-->
+		<!--</div>-->
+	</div>
+
+	<div class="col-lg-2 col-md-2 " id="volume">
+		<div class="col-lg-1" id="volume-icon">
+			<i class="fa fa-volume-down"></i>
+		</div>
+		<div class="col-lg-6" id="volume-bar">
+			<div id="volume-bottom-bar"></div>
+			<div id="volume-top-bar"></div>
+		</div>
+	</div>
+
+</div>
+
+
+<!--Main Body-->
+<div class="container-fluid">
+	<!--Left-most column-->
+	<div class="col-lg-2 col-md-2 col-sm-3" id="left-column">
+		<div id="menu">
+			<h5 class="menu-heading">Main</h5>
+
+			<ul class="list-group left-list">
+				<li class="list-group-item active" href="#"><i class="fa fa-newspaper-o "></i> What's new</li>
+				<li class="list-group-item" href="#"><i class="fa fa-inbox"></i> Inbox</li>
+				<li class="list-group-item" href="#"><i class="fa fa-male"></i> People</li>
+				<li class="list-group-item" href="#"><i class="fa fa-bars"></i> Play Que</li>
+				<li class="list-group-item" href="#"><i class="fa fa-mobile"></i> Devices</li>
+			</ul>
+
+			<h5 class="menu-heading">Collection</h5>
+
+			<ul class="list-group left-list">
+				<li class="list-group-item" href="#"><i class="fa fa-music"></i> Library</li>
+				<li class="list-group-item" href="#"><i class="fa fa-heart"></i> Favorites</li>
+				<li class="list-group-item" href="#"><i class="fa fa-history"></i> History</li>
+			</ul>
+
+			<h5 class="menu-heading">Playlists</h5>
+
+			<ul class="list-group left-list">
+				<li class="list-group-item" href="#"><i class="fa fa-list-alt"></i> Work mixes</li>
+				<li class="list-group-item" href="#"><i class="fa fa-list-alt"></i> Pussy lounge</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-lg-8 col-md-8 col-sm-7" id="middle-column">
+		<div class="col-lg-3 col-md-3 col-sm-3">
+			<div href="#" class="thumbnail album-art">
+				<img src="img/1.jpg" alt="...">
+
+				<div class="caption">
+					<p id="caption-song">Bad Blood</p>
+					<p id="caption-artist"><small>Taylor Swift</small></p>
+				</div>
+
+			</div>
+			<div href="#" class="thumbnail album-art">
+				<img src="img/2.jpg" alt="...">
+			</div>
+			<div href="#" class="thumbnail album-art">
+				<img src="img/3.jpg" alt="...">
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3">
+			<div href="#" class="thumbnail album-art">
+				<img src="img/4.jpg" alt="...">
+			</div>
+			<div href="#" class="thumbnail album-art">
+				<img src="img/36.jpg" alt="...">
+			</div>
+			<div href="#" class="thumbnail album-art">
+				<img src="img/35.jpg" alt="...">
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3">
+			<div href="#" class="thumbnail album-art">
+				<img src="img/7.jpg" alt="...">
+			</div>
+			<div href="#" class="thumbnail album-art">
+				<img src="img/90.jpg" alt="...">
+			</div>
+			<div href="#" class="thumbnail album-art">
+				<img src="img/1.jpg" alt="...">
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3">
+			<div href="#" class="thumbnail album-art">
+				<img src="img/10.jpg" alt="...">
+			</div>
+			<div href="#" class="thumbnail album-art">
+				<img src="img/35.jpg" alt="...">
+			</div>
+			<div href="#" class="thumbnail album-art">
+				<img src="img/12.jpg" alt="...">
+			</div>
+		</div>
+
+	</div>
+	<div class="col-lg-2" id="right-column">
+
+	</div>
+
+</div>
+
+
+<!--javascript-->
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
