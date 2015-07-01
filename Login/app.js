@@ -21,7 +21,6 @@ app.all('*', function (req, res, next) {
 });
 
 
-
 function findById(id, fn) {
     var users = [];
     var index = -1;
@@ -162,6 +161,7 @@ app.post("/register", function (req, res) {
 app.get('/account', ensureAuthenticated, function (req, res) {
     res.send(req.user);
 });
+
 
 app.get('/login', function (req, res) {
     res.send("login karrrlo!")
