@@ -128,7 +128,7 @@ passport.use(new LocalStrategy(
 // Initialize Passport!  Also use passport.session() middleware, to support
 // persistent login sessions (recommended).
 //app.use(flash());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/app'));
 
 
 // Make our db accessible to our router
@@ -138,17 +138,52 @@ app.use(function (req, res, next) {
 });
 
 app.post("/register", function (req, res) {
-    console.log(req.body);
+
 
 // Set our collection
     var collection = db.get('usercollection');
 
-
+    console.log(req.body);
+    //
+    //var registerData = {
+    //    username: req.body.username,
+    //    email: req.body.email,
+    //    password: req.body.password
+    //}
 // Submit to the DB
-    collection.insert(req.body, function (err, doc) {
+    collection.insert(registerData, function (err, doc) {
         if (err) {
             // If it failed, return error
             res.send("There was a problem adding the information to the database.");
+        }
+        else {
+            res.sendStatus(200);
+            res.send({registered: true});
+        }
+
+    });
+});
+app.post("/write", function (req, res) {
+    console.log(req.body);
+
+// Set our collection
+    var collection = db.get('postcollection');
+
+    var postData = {
+        title: req.body.title,
+        post: req.body.blogpost,
+        timestamp: new Date(),
+        user: req.user.username
+    }
+
+    console.log(req.user);
+    console.log(postData);
+
+// Submit to the DB
+    collection.insert(postData, function (err, doc) {
+        if (err) {
+            // If it failed, return error
+            res.send("There was a problem adding the post to the database.");
         }
         else {
             res.sendStatus(200);
@@ -159,7 +194,7 @@ app.post("/register", function (req, res) {
 
 
 app.get('/account', ensureAuthenticated, function (req, res) {
-    res.writeHead( {
+    res.writeHead({
         'Location': 'your/404/path.html'
         //add other headers here...
     });
@@ -183,8 +218,8 @@ app.post('/login',
     function (req, res) {
         console.log("success", req.user);
         console.log("s2", req.session);
-
-        res.redirect('/account');
+        var state = JSON.stringify({logged: true});
+        res.send(state);
     });
 
 // POST /login
@@ -206,9 +241,28 @@ app.post('/login',
  });
  */
 
+
+app.get('/getpost', function (req, res) {
+
+    var collection = db.get('postcollection');
+    collection.find({}, {}, function (e, docs) {
+        if (docs.length == 0) {
+            res.send({records: false});
+        } else {
+            res.send(docs);
+        }
+
+    });
+});
+
+app.get('/loginFailed', function (req, res) {
+    res.send('login failed');
+});
+
+
 app.get('/logout', function (req, res) {
     req.logout();
-    res.redirect('/');
+    res.send({loggedout: true});
 });
 
 app.listen(3030);
@@ -220,7 +274,7 @@ app.listen(3030);
 //   the request will proceed.  Otherwise, the user will be redirected to the
 //   login page.
 function ensureAuthenticated(req, res, next) {
-    console.log("req.user", req.user, req.session);
+    //console.log("req.user", req.user, req.session);
     if (req.isAuthenticated()) {
         return next();
     }

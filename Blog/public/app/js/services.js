@@ -5,22 +5,25 @@
 
 
 angular.module('app.services', []).
-    factory('ergastAPIservice', function($http) {
+    factory('loginServices', function($http) {
 
-        var ergastAPI = {};
+        var loginService = {};
 
-        ergastAPI.getDrivers = function() {
-            return $http({
-                method: 'GET',
-                url: 'http://datastore.asadmemon.com/f1ranking'
+        loginService.post = function(URL) {
+            console.log('post called');
+            return $http.post({
+                method: 'POST',
+                url: URL
+            }).success(function(data, status, headers, config) {
+               console.log(data);
             });
         }
 
-        ergastAPI.getDriver = function(id) {
+        loginService.getDriver = function(id) {
             return $http({
                 method: 'GET',
                 url: 'http://datastore.asadmemon.com/f1ranking/'+id
             });
         }
-        return ergastAPI;
+        return loginService;
     });

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>F-1 Feeder</title>
+
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Blog Home - Start Bootstrap Template</title>
+	<title>Bloggy - Your Personal Blog</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -26,9 +26,45 @@
 </head>
 
 <body ng-app="app">
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#/home">Bloggy</a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
 
+				<li>
+					<a href="#/write">Write Post</a>
+				</li>
+				<li>
+					<a href="#/login">Login</a>
+				</li>
+				
+			</ul>
+			<input ng-show="loggedIn==true" ng-controller="logoutController" ng-click="logout()"
+				   class="btn btn-danger navbar-right pull-right" value="Logout"/>
+
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container -->
+</nav>
 <ng-view></ng-view>
 
+<script>
+	$('#postForm').validate();
+</script>
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
