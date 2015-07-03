@@ -143,26 +143,44 @@ app.post("/register", function (req, res) {
 // Set our collection
     var collection = db.get('usercollection');
 
-    console.log(req.body);
-    //
-    //var registerData = {
-    //    username: req.body.username,
-    //    email: req.body.email,
-    //    password: req.body.password
-    //}
-// Submit to the DB
-    collection.insert(registerData, function (err, doc) {
+    var registerData = {
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    }
+//Submit to the DB
+    collection.insert(req.body, function (err, doc) {
         if (err) {
             // If it failed, return error
             res.send("There was a problem adding the information to the database.");
         }
         else {
-            res.sendStatus(200);
             res.send({registered: true});
         }
 
     });
 });
+
+//
+//app.post("/register", function (req, res) {
+//    console.log(req.body);
+//
+//// Set our collection
+//    var collection = db.get('usercollection');
+//
+//
+//// Submit to the DB
+//    collection.insert(req.body, function (err, doc) {
+//        if (err) {
+//            // If it failed, return error
+//            res.send("There was a problem adding the information to the database.");
+//        }
+//        else {
+//            res.sendStatus(200);
+//        }
+//
+//    });
+//});
 app.post("/write", function (req, res) {
     console.log(req.body);
 
@@ -246,7 +264,7 @@ app.get('/getpost', function (req, res) {
 
     var collection = db.get('postcollection');
     collection.find({}, {}, function (e, docs) {
-        if (docs.length == 0) {
+        if (Object.keys(docs).length == 0) {
             res.send({records: false});
         } else {
             res.send(docs);

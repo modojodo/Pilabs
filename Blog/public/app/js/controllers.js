@@ -25,13 +25,16 @@ angular.module('app.controllers', []).run(function ($rootScope) {
 
     }
 }).controller('registerController', function ($rootScope, $scope, $location, $http) {
-
+    $scope.registered = false
     $scope.register = function () {
-        $http.post('http://localhost:3030/register', $scope.register).success(function (data) {
+        $http.post('http://localhost:3030/register', $scope.signup).success(function (data) {
 
             if (data.registered == true) {
+                $scope.registered = data.registered;
 
-                $location.path('/login');
+                setTimeout(function(){
+                    $location.path('/login');
+                }, 3000);
             }
         });
 
