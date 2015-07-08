@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="build/react.js"></script>
+	<script src="build/JSXTransformer.js"></script>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/jsx" src="js/ThumbnailComponent.js"></script>
+	<script type="text/jsx" src="js/ThumbnailGridComponent.js"></script>
+
+
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+</head>
+<body>
+
+<div id="thumbnail-mount"></div>
+
+<script type="text/jsx">
+	React.render(<ThumbnailGridComponent URL="e.g:" />, document.getElementById('thumbnail-mount'));
+</script>
+</body>
+</html>

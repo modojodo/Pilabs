@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="build/react.js"></script>
+	<script src="build/JSXTransformer.js"></script>
+</head>
+<body>
+<div id="mount-point"></div>
+<script type="text/jsx">
+
+	var MyComponent = React.createClass({
+		render: function(){
+			return (
+					<h1>Hello, {this.props.name}!</h1>
+			);
+		}
+	});
+
+	var MyComponent2 = React.createClass({
+		render: function(){
+			return (
+					<div>
+						<h1>Hello, {this.state.name}!</h1>
+						<MyComponent name={"Creepy "+this.state.name} />
+						<input type="text" onChange={this.nameChange}/>
+					</div>
+			);
+		},
+		getInitialState: function(){
+			return {
+				name:"John"
+			}
+		},
+		nameChange: function(event){
+			this.setState({name:event.target.value})
+			//this.state.name = event.target.value;
+		}
+	});
+
+	React.render(<MyComponent2 name="Handsome" />, document.getElementById('mount-point'));
+</script>
+</body>
+</html>
