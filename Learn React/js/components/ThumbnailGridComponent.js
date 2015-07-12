@@ -1,7 +1,7 @@
 /**
  * Created by Umer on 7/7/2015.
  */
-
+var ThumbnailComponent = require('./ThumbnailComponent');
 var ThumbnailGridComponent = React.createClass({
     render: function () {
         return (
@@ -37,3 +37,5 @@ submit: function (e) {
 }
 
 });
+
+module.exports = ThumbnailGridComponent;

@@ -7,7 +7,7 @@ var ThumbnailComponent = React.createClass({
             var thumbList = [];
             console.log(this.state);
             for (var i = 0; i < this.state.Images.length; i++) {
-                thumbList.push(<img src={this.state.Images[i]} class="img-thumbnail"/>);
+                thumbList.push(<img src={this.state.Images[i]} />);
         }
 
         return (
@@ -35,3 +35,5 @@ getInitialState: function () {
 }
 
 });
+
+module.exports = ThumbnailComponent;

@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-    padding-top: 65px;
+    padding-top: 50px;
     background-color: #F5F5F5;
 }
 
@@ -11,11 +11,19 @@ body {
     font-family: 'FontAwesome';
     border-radius: 20px;
     height: 22px;
+    max-width: 180px;
     margin-top: 6px;
+    display: inline-block;
+    margin-right: 150px;
+}
+
+.navbar-nav {
+    margin-left: 150px;
 }
 
 #left-column {
     border-right: 2px solid #95A5A6;
+
 }
 
 #menu .list-group-item {
@@ -56,11 +64,6 @@ body {
     margin-right: 10px;
 }
 
-.navbar {
-    padding-right: 100px;
-    padding-left: 150px;
-}
-
 #player {
     width: 100%;
     position: fixed;
@@ -71,6 +74,7 @@ body {
     text-align: center;
     padding-right: 0;
     padding-left: 0;
+
 }
 
 #player-btn {
@@ -185,23 +189,40 @@ body {
     width: 20%;
 }
 
-.album-art img{
+.album-art img {
     border-radius: 2%;
 }
 
-#middle-column .album-art {
+.album-art {
     background-color: #F5F5F5;
     outline: none;
     border: none;
+    height: inherit;
+    margin-bottom: 5px;
 }
 
+.caption-active {
+    background-color: #5FB3E3;
+    border: 1px solid #ddd;
+}
+
+.caption-active .caption-song {
+    color: #D3E7F6;
+}
+
+.caption-active .caption-artist {
+    color: #DCECF8;
+}
+#middle-column{
+    margin-top: 10px;
+}
 #middle-column .album-art > .caption, #middle-column .album-art > .caption > p {
     padding: 0;
     margin: 0;
     text-align: center;
 }
 
-#caption-song {
+.caption-song {
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;
     padding-top: 2px;
@@ -209,7 +230,7 @@ body {
 
 }
 
-#caption-artist {
+.caption-artist {
     font-family: 'Open Sans', sans-serif;
     padding-bottom: 2px;
     color: #708899;
@@ -219,6 +240,58 @@ body {
 
 #right-column {
     border-left: 2px solid #95A5A6;
+}
+
+.friend-list {
+    max-height: 60px;
+    padding: 0;
+    margin: 5px;
+    background-color: #F5F5F5;
+    border: none;
+}
+
+.friend-name {
+    color: #37607A;
+    margin: 0;
+    padding: 0;
+
+}
+
+.friend-music {
+    color: #708899;
+}
+
+.music-icon {
+    margin-right: 5px;
+    color: #6A9DDD;
+}
+
+.heart-icon {
+    color: #F07057;
+    margin-right: 5px;
+}
+
+.friend-thumbnail {
+    max-width: 35px;
+    max-height: 35px;
+    display: inline-block;
+    margin: 0;
+    border: none;
+    background-color: #F5F5F5;
+}
+
+.friend-thumbnail img {
+    min-width: 25px;
+    min-height: 25px;
+    max-width: 25px;
+    max-height: 25px;
+    overflow: hidden;
+    border-radius: 10%;
+}
+
+.friend-info {
+    display: inline-block;
+    margin-left: 10px;
 }
 
 /*Navbar color override*/

@@ -35,7 +35,7 @@ $(function () {
     });
     $(document).on('click', '.starMark', function (e) {
         e.stopPropagation();
-        var dataToStore = {
+       var dataToStore= {
             "id": $(this).parent().attr('data-id'),
             "star": true
         }
@@ -66,88 +66,73 @@ $(function () {
     });
 
     function appendMsgList(arr, fn) {
-        var startType = "";
+        var startType= "";
 
 
         if (arr.length > 0) {
             for (var i = 0; i < arr.length; i++) {
-                if (arr[i].star == true) {
-                    startType = 'fa-star';
+                if(arr[i].star==true){
+                    startType='fa-star';
 
-                } else {
-                    startType = 'fa-star-o';
+                }else{
+                    startType='fa-star-o';
                 }
-                $('#msgs-list').append('<div class="btn-default msg-list-container"><div class="msg-list-wrapper"><div class="col-lg-2 operation-holder" data-id="' + arr[i]._id + '"><input class="msgCheck" type="checkbox"/><br/><i class="starMark fa ' + startType + ' btn-default btn btn-default star-icon"></i></div><div class="col-lg-10 content-holder" ><div class="email-wrapper">' + arr[i].senderEmail + '</div><div class="subject-wrapper">' + arr[i].subject + '</div> <div class="text-wrapper"> ' + arr[i].msg + '</div> </div></div> </div>');
+                $('#msgs-list').append('<div class="btn-default msg-list-container"><div class="msg-list-wrapper"><div class="col-lg-2 operation-holder" data-id="' + arr[i]._id + '"><input class="msgCheck" type="checkbox"/><br/><i class="starMark fa '+startType+' btn-default btn btn-default star-icon"></i></div><div class="col-lg-10 content-holder" ><div class="email-wrapper">' + arr[i].senderEmail + '</div><div class="subject-wrapper">' + arr[i].subject + '</div> <div class="text-wrapper"> ' + arr[i].msg + '</div> </div></div> </div>');
             }
         } else if ($.trim($("#msgs-list").html()) == '') {
             fn();
         }
     }
 
-    function appendStarMsgList(arr) {
-
-        if (arr.length > 0) {
-            for (var i = 0; i < arr.length; i++) {
-                if (arr[i].star == true) {
-                    $('#msgs-list').append('<div class="btn-default msg-list-container"><div class="msg-list-wrapper"><div class="col-lg-2 operation-holder" data-id="' + arr[i]._id + '"><input class="msgCheck" type="checkbox"/><br/><i class="starMark fa fa-star btn-default btn btn-default star-icon"></i></div><div class="col-lg-10 content-holder" ><div class="email-wrapper">' + arr[i].senderEmail + '</div><div class="subject-wrapper">' + arr[i].subject + '</div> <div class="text-wrapper"> ' + arr[i].msg + '</div> </div></div> </div>');
-                }
-                else if ($.trim($("#msgs-list").html()) == '') {
-                    starBoxIsEmpty();
-                }
-            }
-
-        }
+    //function appendStarMsgList(){
+    //
+    //
+    //
+    //}
 
 
+    function loadInbox() {
+        $.get('http://localhost:3030/getmsg', function (res) {
+            inboxMessages = res;
+            makeInboxEmpty();
+            appendMsgList(inboxMessages, inboxIsEmpty);
+        });
+    }
 
-        function loadInbox() {
-            $.get('http://localhost:3030/getmsg', function (res) {
-                inboxMessages = res;
-                makeInboxEmpty();
-                appendMsgList(inboxMessages, inboxIsEmpty);
-            });
-        }
 
-
-        var sentMsg = [];
-        $("#sentMail").on('click', function () {
-            $.get('http://localhost:3030/sent', function (res) {
-                sentMsg = res;
-                makeInboxEmpty();
-                appendMsgList(sentMsg, sentBoxIsEmpty);
-
-            });
-
+    var sentMsg = [];
+    $("#sentMail").on('click', function () {
+        $.get('http://localhost:3030/sent', function (res) {
+            sentMsg = res;
+            makeInboxEmpty();
+            appendMsgList(sentMsg, sentBoxIsEmpty);
 
         });
 
 
-        function msgViewerIsEmpty() {
+    });
 
-            if ($.trim($("#msg-viewer").html()) == '') {
 
-                $("#msg-viewer").html('<p id="msgViewerInfo"><i class="fa fa-hand-o-left"></i> Hey I\'m a <b>mail viewer</b>, select any mail from inbox to make use of me. <i class="fa fa-smile-o"></i> </p>');
-            }
+    function msgViewerIsEmpty() {
+
+        if ($.trim($("#msg-viewer").html()) == '') {
+
+            $("#msg-viewer").html('<p id="msgViewerInfo"><i class="fa fa-hand-o-left"></i> Hey I\'m a <b>mail viewer</b>, select any mail from inbox to make use of me. <i class="fa fa-smile-o"></i> </p>');
         }
-
-        function makeInboxEmpty() {
-            $('#msgs-list').empty();
-        }
-        function starBoxIsEmpty(){
-            $('#msgs-list').html('<p><b>Wohoo! There are no starred messages! :)</b></p>');
-        }
-
-
-        function inboxIsEmpty() {
-            $('#msgs-list').html('<p><b>Wohoo! There are no messages to read! :)</b></p>');
-        }
-
-        function sentBoxIsEmpty() {
-            $('#msgs-list').html('<p><b>Uh, oh. You haven\'t sent any email!</b></p>');
-        }
-
-
     }
 
-    )
-    ;
+    function makeInboxEmpty() {
+        $('#msgs-list').empty();
+    }
+
+    function inboxIsEmpty() {
+        $('#msgs-list').html('<p><b>Wohoo! There are no messages to read! :)</b></p>');
+    }
+
+    function sentBoxIsEmpty() {
+        $('#msgs-list').html('<p><b>Uh, oh. You haven\'t sent any email!</b></p>');
+    }
+
+
+})
+;

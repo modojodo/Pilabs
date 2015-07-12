@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
 	<script src="build/react.js"></script>
-	<script src="build/JSXTransformer.js"></script>
+	<!--<script src="build/JSXTransformer.js"></script>-->
+	<script src="js/jquery-1.11.3.min.js"></script>
+
+
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+
+	<style>
+		input[type=text] {
+			border: 1px solid #ffffff;
+			box-shadow: -1px 1px 2px #000;
+			margin-right: 5px;
+			margin-left: 5px;
+			border-radius: 2px;
+		}
+
+		input[type=submit] {
+			border-radius: 4px;
+			background-color: darkseagreen;
+		}
+
+		img {
+			border: 4px solid #ffffff;
+			border-radius: 2px;
+			display: block;
+			height: 200px;
+			width: 200px;
+			max-width: 400px;
+			max-height: 400px;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+			margin-bottom: 5px;
+		}
+	</style>
 </head>
 <body>
-<div id="mount-point"></div>
-<script type="text/jsx">
 
-	var MyComponent = React.createClass({
-		render: function(){
-			return (
-					<h1>Hello, {this.props.name}!</h1>
-			);
-		}
-	});
+<div id="thumbnail-mount"></div>
 
-	var MyComponent2 = React.createClass({
-		render: function(){
-			return (
-					<div>
-						<h1>Hello, {this.state.name}!</h1>
-						<MyComponent name={"Creepy "+this.state.name} />
-						<input type="text" onChange={this.nameChange}/>
-					</div>
-			);
-		},
-		getInitialState: function(){
-			return {
-				name:"John"
-			}
-		},
-		nameChange: function(event){
-			this.setState({name:event.target.value})
-			//this.state.name = event.target.value;
-		}
-	});
-
-	React.render(<MyComponent2 name="Handsome" />, document.getElementById('mount-point'));
-</script>
+<script src="js/bundle.js"></script>
 </body>
 </html>
